@@ -1,5 +1,5 @@
 {
-  "name": "webpacker-react-build",
+  "name": "webpacker-svelte-build",
   "private": true,
   "scripts": {
     "build": "babel src --out-dir dist",
@@ -12,8 +12,6 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.18.2"
   },
   "dependencies": {

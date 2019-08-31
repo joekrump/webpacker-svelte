@@ -1,17 +1,16 @@
 {
-  "name": "webpacker-react",
+  "name": "webpacker-svelte",
   "version": "1.0.0-beta.1",
   "description": "Javascript",
   "main": "index.js",
-  "homepage": "https://github.com/renchap/webpacker-react",
-  "repository": "renchap/webpacker-react",
+  "homepage": "https://github.com/will-wow/webpacker-svelte",
+  "repository": "renchap/webpacker-svelte",
   "author": {
-    "name": "Renaud Chaput",
-    "email": "renchap@gmail.com"
+    "name": "Will Ockelmann-Wagner",
+    "email": "will.ockelmann.wagner@gmail.com"
   },
   "peerDependencies": {
-    "react": ">= 0.14",
-    "react-dom": ">= 0.14"
+    "svelte": ">= 3"
   },
   "files": [
     "index.js",
