@@ -7,6 +7,8 @@ import ujs from './ujs'
 const CLASS_ATTRIBUTE_NAME = 'data-svelte-component'
 const PROPS_ATTRIBUTE_NAME = 'data-svelte-props'
 
+const noop = () => {}
+
 const WebpackerSvelte = {
   registeredComponents: {},
 
@@ -14,12 +16,10 @@ const WebpackerSvelte = {
     const propsJson = node.getAttribute(PROPS_ATTRIBUTE_NAME)
     const props = propsJson && JSON.parse(propsJson)
 
-    const c = new Component({
+    new Component({
       target: node,
       props
     })
-
-    console.log(c)
   },
 
   registerComponents(components) {
@@ -35,14 +35,6 @@ const WebpackerSvelte = {
 
     assign(this.registeredComponents, omit(components, collisions))
     return true
-  },
-
-  unmountComponents() {
-    // TODO
-    // const mounted = document.querySelectorAll(`[${CLASS_ATTRIBUTE_NAME}]`);
-    // for (let i = 0; i < mounted.length; i += 1) {
-    //   ReactDOM.unmountComponentAtNode(mounted[i]);
-    // }
   },
 
   mountComponents() {
@@ -67,10 +59,7 @@ const WebpackerSvelte = {
   setup(components = {}) {
     if (typeof window.WebpackerSvelte === 'undefined') {
       window.WebpackerSvelte = this
-      ujs.setup(
-        this.mountComponents.bind(this),
-        this.unmountComponents.bind(this)
-      )
+      ujs.setup(this.unmountComponents.bind(this), noop)
     }
 
     window.WebpackerSvelte.registerComponents(components)
