@@ -1,7 +1,5 @@
-import React from 'react';
-import WebpackerSvelte from 'webpacker-svelte';
-import HelloSvelte from 'components/hello';
+import WebpackerSvelte from 'webpacker-svelte'
+import HelloSvelte from 'components/hello'
+import A from 'components/a'
 
-const A = (props) => <div>Component A</div>;
-
-WebpackerReact.setup({A, HelloReact});
+WebpackerSvelte.setup({ A, HelloSvelte })

@@ -1,16 +1,29 @@
 {
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.7",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "svelte": "^3.9.1",
     "turbolinks": "^5.2.0",
-    "webpacker-react": "file:../../javascript/webpacker_react-npm-module/dist"
+    "webpacker-svelte": "file:../../javascript/webpacker_svelte-npm-module/dist"
   },
   "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "prettier-plugin-svelte": "^0.7.0",
     "webpack-dev-server": "^3.7.2"
+  },
+  "scripts": {
+    "lint": "npm-run-all -c lint:*",
+    "lint:prettier": "prettier --check '**/*.{js,json,md,svelte}'",
+    "lint:eslint": "eslint app/javascript/",
+    "format": "npm-run-all -c format:*",
+    "format:eslint": "eslint --fix app/javascript/",
+    "format:prettier": "prettier --write '**/*.{js,json,md,svelte}'"
   }
 }

@@ -1,0 +1,2 @@
+<div>Component B</div>
+;

@@ -1,7 +1,5 @@
-import React from 'react';
-import WebpackerReact from 'webpacker-react';
+import WebpackerSvelte from 'webpacker-svelte'
+import HelloSvelte from 'components/hello'
+import B from 'components/b'
 
-const HelloReact = (props) => <div>This component will be ignored</div>;
-const B = (props) => <div>Component B</div>;
-
-WebpackerReact.setup({HelloReact, B});
+WebpackerSvelte.setup({ HelloSvelte, B })
