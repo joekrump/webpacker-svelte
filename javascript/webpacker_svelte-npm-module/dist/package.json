@@ -4,7 +4,7 @@
   "description": "Javascript",
   "main": "index.js",
   "homepage": "https://github.com/will-wow/webpacker-svelte",
-  "repository": "renchap/webpacker-svelte",
+  "repository": "will-wow/webpacker-svelte",
   "author": {
     "name": "Will Ockelmann-Wagner",
     "email": "will.ockelmann.wagner@gmail.com"
@@ -14,7 +14,6 @@
   },
   "files": [
     "index.js",
-    "configure-hot-module-replacement.js",
     "ujs.js"
   ],
   "scripts": {

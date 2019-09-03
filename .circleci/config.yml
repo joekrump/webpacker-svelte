@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/webpacker-react
+    working_directory: ~/webpacker-svelte
     docker:
       - image: circleci/ruby:2.4.3-node-browsers
         environment:
@@ -15,15 +15,15 @@ jobs:
           command: bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run:
           command: yarn
-          pwd: javascript/webpacker_react-npm-module
+          pwd: javascript/webpacker_svelte-npm-module
       - run:
           command: yarn
-          pwd: javascript/webpacker_react-npm-module/dist
+          pwd: javascript/webpacker_svelte-npm-module/dist
 
       # Lint
       - run:
           command: yarn lint
-          pwd: javascript/webpacker_react-npm-module
+          pwd: javascript/webpacker_svelte-npm-module
       - run:
           command: bundle exec rubocop
 

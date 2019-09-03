@@ -1,5 +1,5 @@
 module Webpacker
-  module React
+  module Svelte
     class Component
       include ActionView::Helpers::TagHelper
       include ActionView::Helpers::TextHelper
@@ -12,7 +12,7 @@ module Webpacker
 
       def render(props = {}, options = {})
         tag = options.delete(:tag) || :div
-        data = { data: { "react-class" => @name, "react-props" => props.to_json } }
+        data = { data: { "svelte-component" => @name, "svelte-props" => props.to_json } }
 
         content_tag(tag, nil, options.deep_merge(data))
       end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    webpacker-react (0.4.0)
+    webpacker-svelte (1.0.0.beta.1)
       webpacker
 
 GEM
@@ -171,7 +171,7 @@ DEPENDENCIES
   rubocop (>= 0.47)
   selenium-webdriver
   webpacker (~> 4.0.0)
-  webpacker-react!
+  webpacker-svelte!
 
 BUNDLED WITH
    1.17.2

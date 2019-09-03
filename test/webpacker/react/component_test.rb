@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Webpacker
-  module React
+  module Svelte
     class ComponentTest < Minitest::Test
       include ERB::Util
 
@@ -9,36 +9,36 @@ module Webpacker
         @component = {
           name: "Hello",
           props: {
-            name: "React"
+            name: "Svelte"
           }
         }
       end
 
       def test_it_outputs_a_div_element
         expected_html = <<-HTML.squish
-          <div data-react-class=\"#{@component[:name]}\"
-               data-react-props=\"#{escaped_props(@component[:props])}\"></div>
+          <div data-svelte-component=\"#{@component[:name]}\"
+               data-svelte-props=\"#{escaped_props(@component[:props])}\"></div>
         HTML
-        html = Webpacker::React::Component.new(@component[:name])
+        html = Webpacker::Svelte::Component.new(@component[:name])
                                           .render(@component[:props])
 
         assert_equal html, expected_html
       end
 
       def test_it_outputs_div_elements_in_series
-        expected_html = "<div data-react-class=\"#{@component[:name]}\" data-react-props=\"#{escaped_props(@component[:props])}\"></div>" * 2
+        expected_html = "<div data-svelte-component=\"#{@component[:name]}\" data-svelte-props=\"#{escaped_props(@component[:props])}\"></div>" * 2
 
-        html = Webpacker::React::Component.new(@component[:name])
+        html = Webpacker::Svelte::Component.new(@component[:name])
                                           .render(@component[:props])
 
-        html += Webpacker::React::Component.new(@component[:name])
+        html += Webpacker::Svelte::Component.new(@component[:name])
                                           .render(@component[:props])
 
         assert_equal expected_html, html
       end
 
       def test_it_accepts_html_options
-        html = Webpacker::React::Component.new(@component[:name])
+        html = Webpacker::Svelte::Component.new(@component[:name])
                                           .render(
                                             @component[:props],
                                             class: "class",
@@ -52,14 +52,14 @@ module Webpacker
       end
 
       def test_it_accepts_tag_option
-        html = Webpacker::React::Component.new(@component[:name])
+        html = Webpacker::Svelte::Component.new(@component[:name])
                                           .render(
                                             @component[:props],
                                             tag: "span"
                                           )
 
         assert(
-          html.include?("<span data-react-class="), "it outputs a span"
+          html.include?("<span data-svelte-component="), "it outputs a span"
         )
       end
 

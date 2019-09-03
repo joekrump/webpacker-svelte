@@ -1,6 +1,7 @@
-import HelloSvelte from 'components/hello'
 import WebpackerSvelte from 'webpacker-svelte'
 import Turbolinks from 'turbolinks'
+
+import HelloSvelte from 'components/hello.svelte'
 
 Turbolinks.start()
 

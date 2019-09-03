@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   end
 
   def controller_component
-    render react_component: "HelloReact", props: { name: "a component rendered from a controller" }
+    render svelte_component: "HelloSvelte", props: { name: "a component rendered from a controller" }
   end
 end

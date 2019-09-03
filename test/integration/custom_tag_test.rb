@@ -5,13 +5,13 @@ class CustomTagTest < ActionDispatch::IntegrationTest
     require_js
 
     visit "/custom_tag_view"
-    assert_selector "span[data-react-class]", text: "Hello, I am a component rendered from a view in a span!"
+    assert_selector "span[data-svelte-component]", text: "Hello, I am a component rendered from a view in a span!"
   end
 
   test "renders from a controller with a custom tag" do
     require_js
 
     visit "/custom_tag_controller"
-    assert_selector "span[data-react-class]", text: "Hello, I am a component rendered from a controller in a span!"
+    assert_selector "span[data-svelte-component]", text: "Hello, I am a component rendered from a controller in a span!"
   end
 end

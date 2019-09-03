@@ -7,12 +7,12 @@ class RendererTest < ActionDispatch::IntegrationTest
 
   test "renders from a view" do
     get url_prefix + "/view"
-    assert_select "div[data-react-class]", true
+    assert_select "div[data-svelte-component]", true
   end
 
   test "renders from a controller" do
     get url_prefix + "/controller"
-    assert_select "div[data-react-class]", true
+    assert_select "div[data-svelte-component]", true
   end
 
   test "component mounts" do

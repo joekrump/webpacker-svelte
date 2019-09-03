@@ -1,9 +1,9 @@
 require "test_helper"
 
 module Webpacker
-  class ReactTest < Minitest::Test
+  class SvelteTest < Minitest::Test
     def test_that_it_has_a_version_number
-      refute_nil ::Webpacker::React::VERSION
+      refute_nil ::Webpacker::Svelte::VERSION
     end
   end
 end

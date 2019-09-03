@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 require "rails_helper"
-require "webpacker/react"
+require "webpacker/svelte"
 require "minitest/autorun"
 require "capybara/rails"
 
