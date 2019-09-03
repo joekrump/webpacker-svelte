@@ -3,15 +3,21 @@
   "private": true,
   "scripts": {
     "build": "babel src --out-dir dist",
-    "lint": "eslint src/",
-    "format": "prettier --write '**/*.{js,json,md}'"
+    "lint": "npm-run-all -c lint:*",
+    "lint:prettier": "prettier --check '**/*.{js,json,md,svelte}'",
+    "lint:eslint": "eslint src/",
+    "format": "npm-run-all -c format:*",
+    "format:eslint": "eslint --fix src/",
+    "format:prettier": "prettier --write '**/*.{js,json,md,svelte}'"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2"
   },
   "dependencies": {
