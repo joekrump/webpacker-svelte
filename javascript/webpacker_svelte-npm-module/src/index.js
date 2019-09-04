@@ -59,7 +59,7 @@ const WebpackerSvelte = {
   setup(components = {}) {
     if (typeof window.WebpackerSvelte === 'undefined') {
       window.WebpackerSvelte = this
-      ujs.setup(this.unmountComponents.bind(this), noop)
+      ujs.setup(this.mountComponents.bind(this), noop)
     }
 
     window.WebpackerSvelte.registerComponents(components)

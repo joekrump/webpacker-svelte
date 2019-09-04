@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name = "webpacker-svelte"
   spec.licenses = ["MIT"]
   spec.version = Webpacker::Svelte::VERSION
-  spec.authors = ["Renaud Chaput"]
-  spec.email = ["renchap@gmail.com"]
+  spec.authors = ["Will Ockelmann-Wagner"]
+  spec.email = ["will.ockelmann.wagner@gmail.com"]
 
   spec.summary = "Provides Svelte integration for Webpacker"
   # spec.description   = %q{TODO: Write a longer description or delete this line.}

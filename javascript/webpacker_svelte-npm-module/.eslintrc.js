@@ -6,6 +6,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': 'off',
     'no-console': 'off',
+    'no-new': 'off',
     semi: ['error', 'never']
   },
   env: {

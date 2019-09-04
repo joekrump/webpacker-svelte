@@ -1,5 +1,5 @@
 module Webpacker
   module Svelte
-    VERSION = "1.0.0.beta.1".freeze
+    VERSION = "0.0.0".freeze
   end
 end

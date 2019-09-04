@@ -1,61 +1,63 @@
-# Webpacker-React [![CircleCI](https://circleci.com/gh/renchap/webpacker-react.svg?style=svg)](https://circleci.com/gh/renchap/webpacker-react)
+# Webpacker-Svelte [![CircleCI](https://circleci.com/gh/will-wow/webpacker-svelte.svg?style=svg)](https://circleci.com/gh/will-wow/webpacker-svelte)
 
-*__Note:__ This is the documentation for the Git master branch. Documentation for the latest release (1.0.0-beta.1) is [available here](https://github.com/renchap/webpacker-react/tree/v0.3.2).*
+_**Note:** This is the documentation for the Git master branch. Documentation for the latest release (0.0.0) is [available here](https://github.com/will-wow/webpacker-svelte/tree/v0.0.0)._
 
-Webpacker-React makes it easy to use [React](https://facebook.github.io/react/) with [Webpacker](https://github.com/rails/webpacker) in your Rails applications.
+Webpacker-Svelte makes it easy to use [Svelte](https://svelte.dev) with [Webpacker](https://github.com/rails/webpacker) in your Rails applications.
+
+This is a port of [@renchap](https://github.com/renchap)'s excellent [webpacker-react](https://github.com/renchap/webpacker-react).
 
 It supports Webpacker 1.2+.
 
-An example application is available: https://github.com/renchap/webpacker-react-example/
+An example application is available: https://github.com/will-wow/svelte-on-rails/
 
 ## Installation
 
-Your Rails application needs to use Webpacker and have the React integration done. Please refer to their documentation documentation for this: https://github.com/rails/webpacker/blob/master/README.md#ready-for-react
+Your Rails application needs to use Webpacker and have the Svelte integration done. Please refer to their documentation documentation for this: https://github.com/rails/webpacker/blob/master/README.md#svelte
 
-First, you need to add the webpacker-react gem to your Rails app Gemfile:
+First, you need to add the webpacker-svelte gem to your Rails app Gemfile:
 
 ```ruby
-gem 'webpacker-react', "~> 1.0.0.beta.1"
+gem 'webpacker-svelte', "~> 0.0.0"
 ```
 
 Once done, run `bundle` to install the gem.
 
-Then you need to update your `package.json` file to include the `webpacker-react` NPM module:
+Then you need to update your `package.json` file to include the `webpacker-svelte` NPM module:
 
-`./bin/yarn add webpacker-react`
+`./bin/yarn add webpacker-svelte`
 
 You are now all set!
 
 ### Note about versions
 
-Webpacker-React contains two parts: a Javascript module and a Ruby gem. Both of those components respect [semantic versioning](http://semver.org). **When upgrading the gem, you need to upgrade the NPM module to the same minor version**. New patch versions can be released for each of the two independently, so it is ok to have the NPM module at version `A.X.Y` and the gem at version `A.X.Z`, but you should never have a different `A` or `X`.
+Webpacker-Svelte contains two parts: a Javascript module and a Ruby gem. Both of those components respect [semantic versioning](http://semver.org). **When upgrading the gem, you need to upgrade the NPM module to the same minor version**. New patch versions can be released for each of the two independently, so it is ok to have the NPM module at version `A.X.Y` and the gem at version `A.X.Z`, but you should never have a different `A` or `X`.
 
 ## Usage
 
 The first step is to register your root components (those you want to load from your HTML).
-In your pack file (`app/javascript/packs/*.js`), import your components as well as `webpacker-react` and register them. Considering you have a component in `app/javascript/components/hello.js`:
+In your pack file (`app/javascript/packs/*.js`), import your components as well as `webpacker-svelte` and register them. Considering you have a component in `app/javascript/components/hello.js`:
 
 ```javascript
-import Hello from 'components/hello'
-import WebpackerReact from 'webpacker-react'
+import Hello from "components/hello.svelte";
+import WebpackerSvelte from "webpacker-svelte";
 
-WebpackerReact.setup({Hello}) // ES6 shorthand for {Hello: Hello}
+WebpackerSvelte.setup({ Hello }); // ES6 shorthand for {Hello: Hello}
 ```
 
 ### With Turbolinks
 
-You have to make sure Turbolinks is loaded before calling `WebpackerReact.initialize()`.
+You have to make sure Turbolinks is loaded before calling `WebpackerSvelte.initialize()`.
 
 For example:
 
 ```javascript
-import Hello from 'components/hello'
-import WebpackerReact from 'webpacker-react'
-import Turbolinks from 'turbolinks'
+import Hello from "components/hello.svelte";
+import WebpackerSvelte from "webpacker-svelte";
+import Turbolinks from "turbolinks";
 
-Turbolinks.start()
+Turbolinks.start();
 
-WebpackerReact.setup({Hello})
+WebpackerSvelte.setup({ Hello });
 ```
 
 You may also load turbolinks in regular asset pipeline `application.js`:
@@ -64,22 +66,22 @@ You may also load turbolinks in regular asset pipeline `application.js`:
 //= require "turbolinks"
 ```
 
-In that case, make sure your packs are loaded *after* `application.js`
+In that case, make sure your packs are loaded _after_ `application.js`
 
-Now you can render React components from your views or your controllers.
+Now you can render Svelte components from your views or your controllers.
 
 ### Rendering from a view
 
-Use the `react_component` helper. The first argument is your component's name, the second one is the `props`:
+Use the `svelte_component` helper. The first argument is your component's name, the second one is the `props`:
 
 ```erb
-<%= react_component('Hello', name: 'React') %>
+<%= svelte_component('Hello', name: 'Svelte') %>
 ```
 
-You can pass a `tag` argument to render the React component in another tag than the default `div`. All other arguments will be passed to `content_tag`:
+You can pass a `tag` argument to render the Svelte component in another tag than the default `div`. All other arguments will be passed to `content_tag`:
 
 ```erb
-<%= react_component('Hello', { name: 'React' }, tag: :span, class: 'my-custom-component') %>
+<%= svelte_component('Hello', { name: 'Svelte' }, tag: :span, class: 'my-custom-component') %>
 # This will render <span class="my-custom-component" data-svelte-component="Hello" data-svelte-props="..."></span>
 ```
 
@@ -88,89 +90,79 @@ You can pass a `tag` argument to render the React component in another tag than 
 ```rb
 class PageController < ApplicationController
   def main
-    render react_component: 'Hello', props: { name: 'React' }
+    render svelte_component: 'Hello', props: { name: 'Svelte' }
   end
 end
 ```
 
-You can use the `tag_options` argument to change the generated HTML, similar to the `react_component` method above:
+You can use the `tag_options` argument to change the generated HTML, similar to the `svelte_component` method above:
 
 ```rb
-render react_component: 'Hello', props: { name: 'React' }, tag_options: { tag: :span, class: 'my-custom-component' }
+render svelte_component: 'Hello', props: { name: 'Svelte' }, tag_options: { tag: :span, class: 'my-custom-component' }
 ```
 
 You can also pass any of the usual arguments to `render` in this call: `layout`, `status`, `content_type`, etc.
 
-*Note: you need to have [Webpack process your code](https://github.com/rails/webpacker#binstubs) before it is available to the browser, either by manually running `./bin/webpack` or having the `./bin/webpack-watcher` process running.*
+_Note: you need to have [Webpack process your code](https://github.com/rails/webpacker#binstubs) before it is available to the browser, either by manually running `./bin/webpack` or having the `./bin/webpack-watcher` process running._
 
 ### Hot Module Replacement
 
+**HRM isn't working for Svelte3 yet. See: https://github.com/sveltejs/svelte-loader/issues/74**
+
 [HMR](https://webpack.js.org/concepts/hot-module-replacement/) allows to reload / add / remove modules live in the browser without
-reloading the page. This allows any change you make to your React components to be applied as soon as you save,
+reloading the page. This allows any change you make to your Svelte components to be applied as soon as you save,
 preserving their current state.
 
-1. install `react-hot-loader` (version 4):
-      ```
-      ./bin/yarn add react-hot-loader@4
-      ```
+**Once svelte-loader supports HMR for Svelte 3:**
 
-2. update your Babel or Webpack config. We provide a convenience function to add the necessary changes to your config if it's not significantly different than the standard Webpacker config:
-      ```js
-      // config/webpack/development.js
-      // This assumes Webpacker 3+
+1. Set up the webpack svelte loader `svelte` for HMR.
 
-      const environment = require("./environment")
-      const webpackerReactconfigureHotModuleReplacement = require('webpacker-react/configure-hot-module-replacement')
+   ```javascript
+   module.exports = {
+     test: /\.svelte$/,
+     use: [
+       {
+         loader: "svelte-loader",
+         options: {
+           // HMR isn't supported for Svelte3 yet
+           //  https://github.com/sveltejs/svelte-loader/issues/74
+           hotReload: true
+         }
+       }
+     ]
+   };
+   ```
 
-      const config = environment.toWebpackConfig()
+1. Set up `webpack-dev-server` for HMR. This is easy, just switch `hmr: true` in your `webpacker.yml` for development!
 
-      module.exports = webpackerReactconfigureHotModuleReplacement(config)
-      ```
-
-      If you prefer to do it manually, you need to add `react-hot-loader/babel` in your Babel plugins (in your `.babelrc` or `.babelrc.js`). You can include it only for development.
-
-3. once Babel is configured, `webpack-dev-server` needs to be set up for HMR. This is easy, just switch `hmr: true` in your `webpacker.yml` for development!
-
-4. you now need to use `webpack-dev-server` (in place of `webpack` or `webpack-watcher`).
-
-5. finally, enable React Hot Loader for your root components (the ones you register with `WebpackerReact.setup`):
-    ```es6
-    // For example in app/javascripts/components/hello.js
-    import React from 'react'
-    import { hot } from 'react-hot-loader'
-
-    const Hello = () => <div>Hello World!</div>
-
-    // This is the important line!
-    export default hot(module)(Hello)
-    ```
+1. you now need to use `webpack-dev-server` (in place of `webpack` or `webpack-watcher`).
 
 ## Development
 
-To work on this gem locally, you first need to clone and setup [the example application](https://github.com/renchap/webpacker-react-example).
+To work on this gem locally, you first need to clone and setup [the example application](https://github.com/will-wow/svelte-on-rails).
 
 Then you need to change the example app Gemfile to point to your local repository and run bundle afterwise:
 
 ```ruby
-gem 'webpacker-react', path: '~/code/webpacker-react/'
+gem 'webpacker-svelte', path: '~/code/webpacker-svelte/'
 ```
 
 Finally, you need to tell Yarn to use your local copy of the NPM module in this application, using [`yarn link`](https://yarnpkg.com/en/docs/cli/link):
 
 ```
-$ cd ~/code/webpacker-react/javascript/webpacker_react-npm-module/
+$ cd ~/code/webpacker-svelte/javascript/webpacker_svelte-npm-module/
 $ yarn
 $ cd dist/
 $ yarn             # compiles the code from src/ to dist/
 $ yarn link
-success Registered "webpacker-react".
-info You can now run `yarn link "webpacker-react"` in the projects where you want to use this module and it will be used instead.
-$ cd ~/code/webpacker-react-example/
-$ yarn link webpacker-react
-success Registered "webpacker-react".
+success Registered "webpacker-svelte".
+info You can now run `yarn link "webpacker-svelte"` in the projects where you want to use this module and it will be used instead.
+$ cd ~/code/svelte-on-rails/
+$ yarn link webpacker-svelte
+success Registered "webpacker-svelte".
 ```
 
-After launching `./bin/webpack-watcher` and `./bin/rails server` in your example app directory, you can now change the Ruby or Javascript code in your local `webpacker-react` repository, and test it immediately using the example app.
+After launching `./bin/webpack-watcher` and `./bin/rails server` in your example app directory, you can now change the Ruby or Javascript code in your local `webpacker-svelte` repository, and test it immediately using the example app.
 
 ## Testing
 
@@ -185,13 +177,13 @@ $ rake test
 If you change the javascript code, please ensure there are no style errors before committing:
 
 ```sh
-$ cd javascript/webpacker_react-npm-module/
+$ cd javascript/webpacker_svelte-npm-module/
 $ yarn lint
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/renchap/webpacker-react.
+Bug reports and pull requests are welcome on GitHub at https://github.com/will-wow/webpacker-svelte.
 Please feel free to open issues about your needs and features you would like to be added.
 
 ## Wishlist
@@ -200,4 +192,4 @@ Please feel free to open issues about your needs and features you would like to 
 
 ### Thanks
 
-This gem has been inspired by the awesome work on [react-rails](https://github.com/reactjs/react-rails) and [react_on_rails](https://github.com/shakacode/react_on_rails/). Many thanks to their authors!
+All credit to [@renchap](https://github.com/renchap) for [webpacker-react](https://github.com/renchap/webpacker-react), this is just a light re-write of that repo to support Svelte!
