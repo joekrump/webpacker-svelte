@@ -125,8 +125,10 @@ preserving their current state.
          loader: "svelte-loader",
          options: {
            // HMR isn't supported for Svelte3 yet
-           //  https://github.com/sveltejs/svelte-loader/issues/74
-           hotReload: true
+           // https://github.com/sveltejs/svelte-loader/issues/74
+           hotReload: false
+           // Emit css that webpacker can extract into a separate css file in production.
+          emitCss: true
          }
        }
      ]
