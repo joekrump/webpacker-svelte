@@ -8,7 +8,7 @@ node_modules/
 /spec/reports/
 /tmp/
 
-/javascript/webpacker_svelte-npm-module/dist/*.js
+/javascript/webpacker_svelte-npm-module/dist/*
 
 test/example_app/log/*
 test/example_app/tmp/*
