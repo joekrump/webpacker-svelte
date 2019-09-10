@@ -24,7 +24,10 @@ Once done, run `bundle` to install the gem.
 
 Then you need to update your `package.json` file to include the `webpacker-svelte` NPM module:
 
-`./bin/yarn add webpacker-svelte`
+```bash
+npm i webpacker-svelte --save-dev
+yarn add webpacker-svelte --dev
+```
 
 You are now all set!
 

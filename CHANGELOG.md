@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.0]
+
+### Changed
+
+- Used rollup and lodash-modularized packages for smaller builds
+
+
 ## [0.0.0]
 
 ### Added
