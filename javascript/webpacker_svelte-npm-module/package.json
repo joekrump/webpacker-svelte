@@ -1,8 +1,27 @@
 {
-  "name": "webpacker-svelte-build",
-  "private": true,
+  "name": "webpacker-svelte",
+  "version": "0.1.0",
+  "description": "webpacker-svelte integration",
+  "homepage": "https://github.com/will-wow/webpacker-svelte",
+  "repository": "will-wow/webpacker-svelte",
+  "author": {
+    "name": "Will Ockelmann-Wagner",
+    "email": "will.ockelmann.wagner@gmail.com"
+  },
+  "license": "MIT",
+  "main": "dist/webpacker-svelte.cjs.js",
+  "module": "dist/webpacker-svelte.js",
+  "keywords": [
+    "svelte",
+    "webpacker"
+  ],
+  "files": [
+    "dist/**/*",
+    "src/**/*"
+  ],
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run lint",
     "lint": "npm-run-all -c lint:*",
     "lint:prettier": "prettier --check '**/*.{js,json,md,svelte}'",
     "lint:eslint": "eslint src/",
@@ -14,13 +33,19 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.3.0",
-    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-import": "^2.18.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "rollup": "^1.21.2"
+  },
+  "peerDependencies": {
+    "svelte": ">= 3"
   },
   "dependencies": {
-    "lodash": "^4.0.0"
+    "lodash.assign": "^4.2.0",
+    "lodash.intersection": "^4.4.0",
+    "lodash.keys": "^4.2.0",
+    "lodash.omit": "^4.5.0"
   }
 }

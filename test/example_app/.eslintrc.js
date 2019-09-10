@@ -1,5 +1,15 @@
 module.exports = {
-  extends: ['airbnb-base', 'prettier'],
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module'
+  },
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+    jest: true
+  },
+  extends: ['eslint:recommended', 'prettier'],
   rules: {
     'comma-dangle': ['error', 'never'],
     'import/no-unresolved': 'off',
@@ -14,9 +24,5 @@ module.exports = {
       files: ['**/*.svelte'],
       processor: 'svelte3/svelte3'
     }
-  ],
-  env: {
-    browser: true,
-    node: true
-  }
+  ]
 }
