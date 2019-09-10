@@ -8,7 +8,7 @@ This is a port of [@renchap](https://github.com/renchap)'s excellent [webpacker-
 
 It supports Webpacker 1.2+.
 
-An example application is available: https://github.com/will-wow/svelte-on-rails/
+An example application is available: https://github.com/will-wow/contacts/
 
 ## Installation
 
@@ -141,7 +141,7 @@ preserving their current state.
 
 ## Development
 
-To work on this gem locally, you first need to clone and setup [the example application](https://github.com/will-wow/svelte-on-rails).
+To work on this gem locally, may want to clone and setup [the example application](https://github.com/will-wow/contacts).
 
 Then you need to change the example app Gemfile to point to your local repository and run bundle afterwise:
 
@@ -159,7 +159,7 @@ $ yarn             # compiles the code from src/ to dist/
 $ yarn link
 success Registered "webpacker-svelte".
 info You can now run `yarn link "webpacker-svelte"` in the projects where you want to use this module and it will be used instead.
-$ cd ~/code/svelte-on-rails/
+$ cd ~/code/contacts/
 $ yarn link webpacker-svelte
 success Registered "webpacker-svelte".
 ```
