@@ -1,6 +1,6 @@
 # Webpacker-Svelte [![CircleCI](https://circleci.com/gh/will-wow/webpacker-svelte.svg?style=svg)](https://circleci.com/gh/will-wow/webpacker-svelte)
 
-_**Note:** This is the documentation for the Git master branch. Documentation for the latest release (0.0.0) is [available here](https://github.com/will-wow/webpacker-svelte/tree/v0.0.0)._
+_**Note:** This is the documentation for the Git master branch. Documentation for the latest release (0.1.0) is [available here](https://github.com/will-wow/webpacker-svelte/tree/v0.1.0)._
 
 Webpacker-Svelte makes it easy to use [Svelte](https://svelte.dev) with [Webpacker](https://github.com/rails/webpacker) in your Rails applications.
 
@@ -8,7 +8,9 @@ This is a port of [@renchap](https://github.com/renchap)'s excellent [webpacker-
 
 It supports Webpacker 1.2+.
 
-An example application is available: https://github.com/will-wow/contacts/
+An example application is available: https://github.com/will-wow/contacts
+
+For more information, see the [blog post](https://blog.carbonfive.com/2019/10/29/the-best-of-both-worlds-html-apps-svelte)
 
 ## Installation
 
@@ -154,7 +156,7 @@ gem 'webpacker-svelte', path: '~/code/webpacker-svelte/'
 
 Finally, you need to tell Yarn to use your local copy of the NPM module in this application, using [`yarn link`](https://yarnpkg.com/en/docs/cli/link):
 
-```
+```bash
 $ cd ~/code/webpacker-svelte/javascript/webpacker_svelte-npm-module/
 $ yarn
 $ cd dist/
@@ -190,10 +192,6 @@ $ yarn lint
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/will-wow/webpacker-svelte.
 Please feel free to open issues about your needs and features you would like to be added.
-
-## Wishlist
-
-- [ ] server-side rendering (#3)
 
 ### Thanks
 
