@@ -173,7 +173,7 @@ After launching `./bin/webpack-watcher` and `./bin/rails server` in your example
 
 ## Testing
 
-If you changed the local javascript package, first ensure it is build (see above).
+If you changed the local javascript package, first ensure it is built (see above).
 
 To run the test suite:
 
