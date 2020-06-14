@@ -1,6 +1,6 @@
 {
   "name": "@coding-g/webpacker-svelte",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "webpacker-svelte integration",
   "homepage": "https://github.com/will-wow/webpacker-svelte",
   "repository": "will-wow/webpacker-svelte",
