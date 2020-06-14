@@ -112,7 +112,7 @@ _Note: you need to have [Webpack process your code](https://github.com/rails/web
 
 ### Hot Module Replacement
 
-**HRM isn't working for Svelte3 yet. See: https://github.com/sveltejs/svelte-loader/issues/74**
+**HMR isn't working for Svelte3 yet. See: https://github.com/sveltejs/svelte-loader/issues/74**
 
 [HMR](https://webpack.js.org/concepts/hot-module-replacement/) allows to reload / add / remove modules live in the browser without
 reloading the page. This allows any change you make to your Svelte components to be applied as soon as you save,
