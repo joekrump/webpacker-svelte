@@ -1,6 +1,8 @@
-# Webpacker-Svelte [![CircleCI](https://circleci.com/gh/will-wow/webpacker-svelte.svg?style=svg)](https://circleci.com/gh/will-wow/webpacker-svelte)
+This is a fork of https://github.com/will-wow/webpacker-svelte
 
-_**Note:** This is the documentation for the Git master branch. Documentation for the latest release (0.1.0) is [available here](https://github.com/will-wow/webpacker-svelte/tree/v0.1.0)._
+The key difference in this fork is that once a Svelte component has been rendered to the page, the wrapper element that is created by the Rails view helper, gets removed. The result is one less DOM node per Svelte component.
+
+The node package can be installed via `yarn add @coding-g/webpacker-svelte` or `npm i @coding-g/webpacker-svelte`.
 
 Webpacker-Svelte makes it easy to use [Svelte](https://svelte.dev) with [Webpacker](https://github.com/rails/webpacker) in your Rails applications.
 
