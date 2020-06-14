@@ -15,11 +15,11 @@ const WebpackerSvelte = {
   render(node, Component) {
     const propsJson = node.getAttribute(PROPS_ATTRIBUTE_NAME)
     const props = propsJson && JSON.parse(propsJson)
-
     new Component({
       target: node,
       props
     })
+    node.replaceWith(node.innerHTML)
   },
 
   registerComponents(components) {
