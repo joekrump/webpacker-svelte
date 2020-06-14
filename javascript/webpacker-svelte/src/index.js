@@ -12,14 +12,20 @@ const noop = () => {}
 const WebpackerSvelte = {
   registeredComponents: {},
 
-  render(node, Component) {
+  render(node, Component, innerContent) {
     const propsJson = node.getAttribute(PROPS_ATTRIBUTE_NAME)
     const props = propsJson && JSON.parse(propsJson)
+    node.innerHTML = null
     new Component({
       target: node,
       props
     })
-    node.replaceWith(node.innerHTML)
+
+    if (innerContent !== undefined) {
+      node.firstElementChild.append(innerContent)
+    }
+
+    node.replaceWith(node.firstElementChild)
   },
 
   registerComponents(components) {
@@ -45,9 +51,12 @@ const WebpackerSvelte = {
       const node = toMount[i]
       const className = node.getAttribute(CLASS_ATTRIBUTE_NAME)
       const component = registeredComponents[className]
-
       if (component) {
-        if (node.innerHTML.length === 0) this.render(node, component)
+        if (node.innerHTML.length === 0) {
+          this.render(node, component)
+        } else {
+          this.render(node, component, node.innerHTML)
+        }
       } else {
         console.error(
           `webpacker-svelte: can not render a component that has not been registered: ${className}`
