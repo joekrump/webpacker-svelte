@@ -9,6 +9,7 @@ module.exports = {
     node: true,
     jest: true
   },
+  "ignorePatterns": ["dist/*"],
   extends: ['eslint:recommended', 'prettier'],
   rules: {
     'comma-dangle': ['error', 'never'],
